@@ -648,38 +648,51 @@
                     Share Desert AutoLabs with your fellow car enthusiasts. When they book their first visit, you both get $10 off your next rental.
                 </p>
                 
-                <!-- Referral Form -->
+                <!-- Quick Referral Form -->
                 <div id="referral-form" style="max-width: 500px; margin: 0 auto; text-align: left;">
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Your Name *</label>
-                        <input type="text" id="referrer-name" placeholder="John Doe" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                        <div>
+                            <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500; font-size: 14px;">Your Name *</label>
+                            <input type="text" id="referrer-name" placeholder="John Doe" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 14px; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500; font-size: 14px;">Your Email *</label>
+                            <input type="email" id="referrer-email" placeholder="john@email.com" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 14px; outline: none;">
+                        </div>
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Your Email *</label>
-                        <input type="email" id="referrer-email" placeholder="john@email.com" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Friend's Name *</label>
-                        <input type="text" id="friend-name" placeholder="Jane Doe" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Friend's Email *</label>
-                        <input type="email" id="friend-email" placeholder="jane@email.com" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                        <div>
+                            <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500; font-size: 14px;">Friend's Name *</label>
+                            <input type="text" id="friend-name" placeholder="Jane Doe" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 14px; outline: none;">
+                        </div>
+                        <div>
+                            <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500; font-size: 14px;">Friend's Email *</label>
+                            <input type="email" id="friend-email" placeholder="jane@email.com" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 14px; outline: none;">
+                        </div>
                     </div>
                     <div style="margin-bottom: 24px;">
-                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Your Referral Code (optional)</label>
-                        <input type="text" id="referral-code" placeholder="Create a code or leave blank" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
+                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500; font-size: 14px;">Your Referral Code (optional)</label>
+                        <input type="text" id="referral-code" placeholder="Create a code like 'MIKE10'" style="width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 14px; outline: none; text-transform: uppercase;">
                     </div>
-                    <button type="button" onclick="submitReferral()" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px;">Send Referral</button>
+                    <button type="button" onclick="submitReferral()" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px;">🎁 Send Referral</button>
                 </div>
                 
                 <!-- Success Message -->
                 <div id="referral-success" style="display: none; text-align: center; padding: 40px;">
                     <div style="font-size: 64px; margin-bottom: 24px;">✅</div>
                     <h3 style="color: var(--white); font-size: 28px; margin-bottom: 16px;">Referral Sent!</h3>
-                    <p style="color: var(--gray-light); font-size: 16px; margin-bottom: 24px;">We've sent your friend an invitation. You'll both get $10 off when they book their first visit!</p>
+                    <p style="color: var(--gray-light); font-size: 16px; margin-bottom: 24px;">We've sent your friend an invitation with a $10 off code!</p>
+                    <div id="referral-code-display" style="background: var(--slate); padding: 20px; border-radius: 12px; margin: 24px auto; max-width: 300px; border: 2px dashed var(--orange);">
+                        <p style="color: var(--gray-light); font-size: 12px; margin-bottom: 8px;">YOUR REFERRAL CODE</p>
+                        <code id="display-code" style="font-family: monospace; font-size: 28px; color: var(--orange); letter-spacing: 3px;">REFERRAL</code>
+                    </div>
+                    <p style="color: var(--gray-light); font-size: 14px; margin-bottom: 24px;">Use this code when you book to get $10 off!</p>
                     <button type="button" onclick="resetReferral()" class="btn btn-outline">Refer Another Friend</button>
                 </div>
+                
+                <p style="color: var(--gray-light); font-size: 12px; margin-top: 24px;">
+                    Want a dedicated referral page? <a href="referral-form.html" style="color: var(--orange);">Click here →</a>
+                </p>
             </div>
         </div>
     </section>
@@ -690,32 +703,43 @@
         const referrerEmail = document.getElementById('referrer-email').value;
         const friendName = document.getElementById('friend-name').value;
         const friendEmail = document.getElementById('friend-email').value;
-        const referralCode = document.getElementById('referral-code').value || 'NEW';
+        const referralCode = document.getElementById('referral-code').value.toUpperCase() || 'NEWFRIEND' + Math.random().toString(36).substr(2, 4).toUpperCase();
         
         if (!referrerName || !referrerEmail || !friendName || !friendEmail) {
             alert('Please fill in all required fields');
             return;
         }
         
-        // Create mailto link for manual submission (free solution)
-        const subject = encodeURIComponent('Desert AutoLabs Referral - $10 Off!');
+        // Generate unique code
+        const uniqueCode = referralCode + Math.random().toString(36).substr(2, 3).toUpperCase();
+        
+        // Send email to friend
+        const subject = encodeURIComponent('🎁 You got $10 off at Desert AutoLabs!');
         const body = encodeURIComponent(
             `Hi ${friendName}!\n\n` +
-            `${referrerName} wants to invite you to Desert AutoLabs - Coachella Valley's premier DIY auto workspace!\n\n` +
-            `Use their referral code: ${referralCode}\n\n` +
-            `Book your first visit and you both get $10 off!\n\n` +
+            `${referrerName} wants you to experience Desert AutoLabs - Coachella Valley's premier DIY auto workspace!\n\n` +
+            `🔥 YOUR $10 OFF CODE: ${uniqueCode}\n\n` +
+            `Book your first visit and use this code at checkout!\n\n` +
             `Visit: https://clawson44.github.io/Desertautolab/\n\n` +
             `See you in the shop! 🔧`
         );
         
-        // Send email to friend
         window.location.href = `mailto:${friendEmail}?subject=${subject}&body=${body}`;
         
-        // Show success after a brief delay
+        // Show success
         setTimeout(() => {
             document.getElementById('referral-form').style.display = 'none';
             document.getElementById('referral-success').style.display = 'block';
-        }, 500);
+            document.getElementById('display-code').textContent = uniqueCode;
+            
+            // Save to localStorage
+            const referrals = JSON.parse(localStorage.getItem('referrals') || '[]');
+            referrals.push({
+                referrerName, referrerEmail, referralCode: uniqueCode, 
+                friendName, friendEmail, date: new Date().toISOString()
+            });
+            localStorage.setItem('referrals', JSON.stringify(referrals));
+        }, 800);
     }
     
     function resetReferral() {

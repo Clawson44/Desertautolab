@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert AutoLabs Referral Program</title>
+    <style>
+        :root { --orange: #E76F51; --charcoal: #2D2D2D; --slate: #1A1A1A; --cream: #F4F1DE; --gray-dark: #3D3D3D; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, var(--slate) 0%, var(--charcoal) 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+        .container { background: var(--charcoal); border-radius: 20px; padding: 60px; max-width: 600px; width: 100%; border: 2px solid var(--orange); }
+        h1 { font-family: 'Oswald', sans-serif; color: var(--cream); font-size: 32px; text-align: center; margin-bottom: 12px; }
+        .subtitle { color: #CCCCCC; text-align: center; margin-bottom: 40px; font-size: 16px; }
+        .form-group { margin-bottom: 24px; }
+        label { display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500; }
+        input { width: 100%; padding: 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none; }
+        input:focus { border-color: var(--orange); }
+        .section-title { color: var(--orange); font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; margin-top: 32px; }
+        .btn { width: 100%; padding: 18px; border-radius: 8px; border: none; font-family: 'Oswald', sans-serif; font-size: 18px; cursor: pointer; transition: all 0.3s ease; }
+        .btn-primary { background: var(--orange); color: white; }
+        .btn-primary:hover { background: #D15A3A; }
+        .benefits { background: var(--slate); border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+        .benefit { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--cream); }
+        .benefit:last-child { margin-bottom: 0; }
+        .benefit-icon { font-size: 24px; }
+        #success { display: none; text-align: center; }
+        .success-icon { font-size: 80px; margin-bottom: 24px; }
+        h2 { color: var(--cream); font-size: 28px; margin-bottom: 16px; }
+        .referral-code-display { background: var(--slate); padding: 20px; border-radius: 12px; margin: 24px 0; border: 2px dashed var(--orange); }
+        .referral-code-display code { font-family: 'Monaco', monospace; font-size: 32px; color: var(--orange); letter-spacing: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container" id="form-container">
+        <h1>🎁 Refer a Friend</h1>
+        <p class="subtitle">Give $10, Get $10! Share Desert AutoLabs with your friends.</p>
+        
+        <div class="benefits">
+            <div class="benefit"><span class="benefit-icon">✅</span> Friend gets $10 off their first visit</div>
+            <div class="benefit"><span class="benefit-icon">✅</span> You earn $10 credit for your next visit</div>
+            <div class="benefit"><span class="benefit-icon">✅</span> Both of you save money!</div>
+        </div>
+        
+        <form id="referralForm" onsubmit="submitReferral(event)">
+            <div class="section-title">Your Information</div>
+            <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" id="referrerName" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Your Email *</label>
+                <input type="email" id="referrerEmail" required placeholder="john@email.com">
+            </div>
+            <div class="form-group">
+                <label>Create a Referral Code (optional)</label>
+                <input type="text" id="referrerCode" placeholder="e.g., JOHN10" maxlength="10" style="text-transform: uppercase;">
+            </div>
+            
+            <div class="section-title">Friend's Information</div>
+            <div class="form-group">
+                <label>Friend's Name *</label>
+                <input type="text" id="friendName" required placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+                <label>Friend's Email *</label>
+                <input type="email" id="friendEmail" required placeholder="jane@email.com">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Send Referral</button>
+        </form>
+        
+        <div id="success">
+            <div class="success-icon">✅</div>
+            <h2>Referral Sent!</h2>
+            <p style="color: #CCCCCC; margin-bottom: 24px;">We've sent your friend an invitation. Your referral code is:</p>
+            <div class="referral-code-display">
+                <code id="displayCode">NEWFRIEND</code>
+            </div>
+            <p style="color: #CCCCCC; font-size: 14px;">Use this code when you book to claim your $10 discount!</p>
+            <button class="btn btn-primary" onclick="resetForm()" style="margin-top: 24px;">Refer Another Friend</button>
+        </div>
+    </div>
+    
+    <script>
+    function submitReferral(e) {
+        e.preventDefault();
+        
+        const referrerName = document.getElementById('referrerName').value;
+        const referrerEmail = document.getElementById('referrerEmail').value;
+        const referrerCode = document.getElementById('referrerCode').value.toUpperCase() || 'NEWFRIEND';
+        const friendName = document.getElementById('friendName').value;
+        const friendEmail = document.getElementById('friendEmail').value;
+        
+        // Generate unique referral code if not provided
+        const uniqueCode = referrerCode + Math.random().toString(36).substr(2, 4).toUpperCase();
+        
+        // Send to Google Sheets (replace with your Google Apps Script URL)
+        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+        
+        // For now, show success and send email
+        const subject = encodeURIComponent('🎁 You got $10 off at Desert AutoLabs!');
+        const body = encodeURIComponent(
+            `Hi ${friendName}!\n\n` +
+            `${referrerName} wants you to experience Desert AutoLabs - Coachella Valley's premier DIY auto workspace!\n\n` +
+            `🔥 Use code: ${uniqueCode}\n` +
+            `🎁 Get $10 off your first visit!\n\n` +
+            `Book now: https://clawson44.github.io/Desertautolab/\n\n` +
+            `See you in the shop! 🔧`
+        );
+        
+        // Open email client for friend
+        window.location.href = `mailto:${friendEmail}?subject=${subject}&body=${body}`;
+        
+        // Show success after short delay
+        setTimeout(() => {
+            document.getElementById('referralForm').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+            document.getElementById('displayCode').textContent = uniqueCode;
+            
+            // Save to localStorage for tracking
+            const referrals = JSON.parse(localStorage.getItem('referrals') || '[]');
+            referrals.push({
+                referrerName, referrerEmail, referrerCode: uniqueCode, 
+                friendName, friendEmail, date: new Date().toISOString()
+            });
+            localStorage.setItem('referrals', JSON.stringify(referrals));
+        }, 1000);
+    }
+    
+    function resetForm() {
+        document.getElementById('referralForm').reset();
+        document.getElementById('referralForm').style.display = 'block';
+        document.getElementById('success').style.display = 'none';
+    }
+    </script>
+</body>
+</html>
