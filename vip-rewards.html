@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert AutoLabs VIP Rewards | Exclusive Members Only</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --orange: #E76F51; --orange-dark: #D15A3A; --charcoal: #2D2D2D; --slate: #1A1A1A; --cream: #F4F1DE; --copper: #C9A66B; --gold: #FFD700; --silver: #C0C0C0; --bronze: #CD7F32; --platinum: #E5E4E2; --green: #2A9D8F; --purple: #9B59B6; --gray-dark: #3D3D3D; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: var(--cream); background: linear-gradient(135deg, var(--slate) 0%, var(--charcoal) 100%); }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; font-weight: 700; line-height: 1.2; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .btn { display: inline-block; padding: 18px 40px; border-radius: 8px; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 16px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; border: none; }
+        .btn-primary { background: linear-gradient(135deg, var(--gold), var(--copper)); color: var(--charcoal); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3); }
+        .btn-outline { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: clamp(32px, 5vw, 48px); color: var(--white); margin-bottom: 16px; }
+        .section-title p { color: var(--cream); max-width: 600px; margin: 0 auto; }
+        
+        /* HERO */
+        .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 20px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at center, rgba(231, 111, 81, 0.1) 0%, transparent 70%); }
+        .hero-content { position: relative; z-index: 1; }
+        .vip-badge { display: inline-block; background: linear-gradient(135deg, var(--gold), var(--copper)); color: var(--charcoal); padding: 8px 24px; border-radius: 30px; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 24px; }
+        .hero h1 { font-size: clamp(40px, 8vw, 80px); color: var(--white); margin-bottom: 24px; text-transform: uppercase; }
+        .hero h1 span { background: linear-gradient(135deg, var(--gold), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { font-size: 20px; color: var(--cream); max-width: 600px; margin: 0 auto 32px; }
+        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        
+        /* TIERS */
+        .tiers { padding: 100px 0; background: var(--charcoal); }
+        .tiers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .tier-card { background: var(--slate); border-radius: 20px; padding: 40px 24px; text-align: center; border: 2px solid var(--gray-dark); position: relative; overflow: hidden; transition: all 0.3s ease; }
+        .tier-card:hover { transform: translateY(-8px); }
+        .tier-card.bronze { border-color: var(--bronze); }
+        .tier-card.silver { border-color: var(--silver); }
+        .tier-card.gold { border-color: var(--gold); box-shadow: 0 0 40px rgba(255, 215, 0, 0.2); }
+        .tier-card.platinum { border-color: var(--platinum); background: linear-gradient(135deg, var(--slate), rgba(229, 228, 226, 0.1)); }
+        .tier-icon { font-size: 64px; margin-bottom: 16px; }
+        .tier-name { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+        .tier-req { font-size: 14px; color: var(--cream); margin-bottom: 24px; }
+        .tier-benefits { list-style: none; margin-bottom: 32px; text-align: left; }
+        .tier-benefits li { padding: 8px 0; color: var(--cream); font-size: 14px; display: flex; align-items: center; gap: 12px; }
+        .tier-benefits li::before { content: '✓'; color: var(--green); font-weight: 700; }
+        .tier-points { background: var(--charcoal); padding: 12px; border-radius: 8px; margin-bottom: 24px; }
+        .tier-points span { display: block; font-size: 24px; font-family: 'Oswald', sans-serif; font-weight: 700; color: var(--orange); }
+        .tier-points small { font-size: 12px; color: var(--cream); }
+        
+        /* BENEFITS */
+        .benefits { padding: 100px 0; background: var(--slate); }
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .benefit-card { background: var(--charcoal); border-radius: 16px; padding: 32px; text-align: center; border: 1px solid var(--gray-dark); transition: all 0.3s ease; }
+        .benefit-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+        .benefit-icon { font-size: 48px; margin-bottom: 16px; }
+        .benefit-card h3 { color: var(--white); font-size: 22px; margin-bottom: 12px; }
+        .benefit-card p { color: var(--cream); font-size: 14px; }
+        
+        /* REWARDS */
+        .rewards { padding: 100px 0; background: var(--charcoal); }
+        .rewards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .reward-card { background: var(--slate); border-radius: 16px; padding: 24px; text-align: center; border: 1px solid var(--gray-dark); transition: all 0.3s ease; }
+        .reward-card:hover { border-color: var(--gold); transform: scale(1.02); }
+        .reward-card.featured { border-color: var(--purple); box-shadow: 0 0 30px rgba(155, 89, 182, 0.2); }
+        .reward-icon { font-size: 48px; margin-bottom: 16px; }
+        .reward-name { color: var(--white); font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .reward-desc { color: var(--cream); font-size: 13px; margin-bottom: 16px; }
+        .reward-cost { display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .reward-points { font-family: 'Oswald', sans-serif; font-weight: 700; color: var(--gold); font-size: 24px; }
+        .reward-points small { font-size: 14px; color: var(--cream); }
+        .reward-btn { margin-top: 16px; width: 100%; padding: 12px; font-size: 14px; }
+        
+        /* LEADERBOARD */
+        .leaderboard { padding: 100px 0; background: var(--slate); }
+        .leaderboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        .leaderboard-section { background: var(--charcoal); border-radius: 20px; padding: 32px; }
+        .leaderboard-section h3 { font-size: 24px; color: var(--white); margin-bottom: 24px; text-align: center; }
+        .leaderboard-header { display: grid; grid-template-columns: 50px 1fr 100px; gap: 12px; padding: 12px 16px; background: var(--gray-dark); border-radius: 8px; margin-bottom: 12px; font-size: 12px; color: var(--cream); text-transform: uppercase; }
+        .leaderboard-row { display: grid; grid-template-columns: 50px 1fr 100px; gap: 12px; padding: 16px; background: var(--slate); border-radius: 12px; margin-bottom: 8px; align-items: center; transition: all 0.3s ease; }
+        .leaderboard-row:hover { transform: scale(1.02); }
+        .leaderboard-row.top { border: 2px solid var(--gold); background: linear-gradient(135deg, var(--slate), rgba(255, 215, 0, 0.1)); }
+        .leaderboard-rank { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; }
+        .leaderboard-row.top .leaderboard-rank { color: var(--gold); }
+        .leaderboard-name { font-weight: 600; color: var(--cream); }
+        .leaderboard-points { font-family: 'Oswald', sans-serif; font-weight: 700; color: var(--orange); font-size: 20px; }
+        
+        /* APPLY FORM */
+        .apply { padding: 100px 0; background: var(--charcoal); }
+        .apply-form { max-width: 600px; margin: 0 auto; background: var(--slate); border-radius: 20px; padding: 48px; border: 2px solid var(--gold); }
+        .form-group { margin-bottom: 24px; }
+        .form-group label { display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500; }
+        .form-group input, .form-group select { width: 100%; padding: 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--charcoal); color: var(--cream); font-size: 16px; outline: none; }
+        .form-group input:focus { border-color: var(--gold); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; }
+        .checkbox-group input { width: auto; margin-top: 4px; }
+        .checkbox-group label { font-size: 14px; color: var(--cream); }
+        
+        /* FOOTER */
+        .footer { background: var(--slate); padding: 60px 0 30px; border-top: 1px solid var(--gray-dark); }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer-brand h3 { font-size: 28px; color: var(--white); margin-bottom: 16px; }
+        .footer-brand h3 span { color: var(--gold); }
+        .footer-brand p { color: var(--cream); margin-bottom: 24px; }
+        .footer h4 { color: var(--white); font-size: 14px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .footer ul li { margin-bottom: 12px; }
+        .footer ul li a { color: var(--cream); transition: color 0.3s; }
+        .footer ul li a:hover { color: var(--gold); }
+        .footer-bottom { padding-top: 30px; border-top: 1px solid var(--gray-dark); text-align: center; color: var(--cream); font-size: 14px; }
+        
+        @media (max-width: 1024px) {
+            .tiers-grid, .rewards-grid { grid-template-columns: repeat(2, 1fr); }
+            .leaderboard-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .tiers-grid, .rewards-grid, .benefits-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="vip-badge">✨ Exclusive Members Only</div>
+                <h1>Desert AutoLabs <span>VIP Rewards</span></h1>
+                <p>Earn points every time you visit. Unlock exclusive perks, free rentals, and premium benefits. The more you work, the more you earn!</p>
+                <div class="hero-btns">
+                    <a href="#apply" class="btn btn-primary">Join VIP Program</a>
+                    <a href="#tiers" class="btn btn-outline">View Tiers</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIERS -->
+    <section class="tiers" id="tiers">
+        <div class="container">
+            <div class="section-title">
+                <h2>VIP Tiers</h2>
+                <p>Climb the ranks and unlock exclusive benefits</p>
+            </div>
+            <div class="tiers-grid">
+                <div class="tier-card bronze">
+                    <div class="tier-icon">🥉</div>
+                    <div class="tier-name">Bronze</div>
+                    <div class="tier-req">0 - 499 Points</div>
+                    <ul class="tier-benefits">
+                        <li>5% off every visit</li>
+                        <li>Priority booking</li>
+                        <li>Free gloves every visit</li>
+                        <li>Birthday bonus: 50 points</li>
+                        <li>Members-only newsletter</li>
+                    </ul>
+                    <div class="tier-points"><span>5 pts/hr</span><small>Points earned per hour</small></div>
+                </div>
+                <div class="tier-card silver">
+                    <div class="tier-icon">🥈</div>
+                    <div class="tier-name">Silver</div>
+                    <div class="tier-req">500 - 1,499 Points</div>
+                    <ul class="tier-benefits">
+                        <li>10% off every visit</li>
+                        <li>Priority booking</li>
+                        <li>Free gloves & shop rag</li>
+                        <li>Birthday bonus: 100 points</li>
+                        <li>Early access to new tools</li>
+                        <li>Free coffee & snacks</li>
+                    </ul>
+                    <div class="tier-points"><span>8 pts/hr</span><small>+60% more than Bronze</small></div>
+                </div>
+                <div class="tier-card gold">
+                    <div class="tier-icon">🥇</div>
+                    <div class="tier-name">Gold</div>
+                    <div class="tier-req">1,500 - 4,999 Points</div>
+                    <ul class="tier-benefits">
+                        <li>15% off every visit</li>
+                        <li>VIP booking window</li>
+                        <li>Free premium tool rental</li>
+                        <li>Birthday bonus: 250 points</li>
+                        <li>Invitations to VIP events</li>
+                        <li>Free storage for project car</li>
+                        <li>Name on VIP wall</li>
+                    </ul>
+                    <div class="tier-points"><span>12 pts/hr</span><small>+140% more than Bronze</small></div>
+                </div>
+                <div class="tier-card platinum">
+                    <div class="tier-icon">💎</div>
+                    <div class="tier-name">Platinum</div>
+                    <div class="tier-req">5,000+ Points</div>
+                    <ul class="tier-benefits">
+                        <li>20% off every visit</li>
+                        <li>First access to new bays</li>
+                        <li>All tools included free</li>
+                        <li>Birthday bonus: 500 points</li>
+                        <li>Exclusive VIP events</li>
+                        <li>Dedicated parking spot</li>
+                        <li>Personal tool locker</li>
+                        <li>Meet & greet with staff</li>
+                    </ul>
+                    <div class="tier-points"><span>18 pts/hr</span><small>+260% more than Bronze</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO EARN -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>How to Earn Points</h2>
+                <p>Multiple ways to climb the VIP ladder</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card"><div class="benefit-icon">🔧</div><h3>Work on Your Car</h3><p>Earn 5-18 points per hour depending on your tier.</p></div>
+                <div class="benefit-card"><div class="benefit-icon">👥</div><h3>Refer Friends</h3><p>Earn 100 points for every friend who books!</p></div>
+                <div class="benefit-card"><div class="benefit-icon">⭐</div><h3>Leave Reviews</h3><p>Get 25 points for leaving a Google review.</p></div>
+                <div class="benefit-card"><div class="benefit-icon">📸</div><h3>Social Shares</h3><p>Earn 10 points for tagging us on social media.</p></div>
+                <div class="benefit-card"><div class="benefit-icon">🎂</div><h3>Birthday Bonus</h3><p>Get tier-based bonus points on your birthday!</p></div>
+                <div class="benefit-card"><div class="benefit-icon">🎉</div><h3>VIP Events</h3><p>Attend member-only events for double points!</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REWARDS -->
+    <section class="rewards" id="rewards">
+        <div class="container">
+            <div class="section-title">
+                <h2>Rewards Catalog</h2>
+                <p>Redeem your hard-earned points for amazing perks</p>
+            </div>
+            <div class="rewards-grid">
+                <div class="reward-card"><div class="reward-icon">☕</div><div class="reward-name">Free Coffee</div><div class="reward-desc">Fresh cup of coffee</div><div class="reward-cost"><span class="reward-points">25<small>pts</small></span></div><button class="btn btn-outline reward-btn">Redeem</button></div>
+                <div class="reward-card"><div class="reward-icon">🧤</div><div class="reward-name">Premium Gloves</div><div class="reward-desc">High-quality work gloves</div><div class="reward-cost"><span class="reward-points">50<small>pts</small></span></div><button class="btn btn-outline reward-btn">Redeem</button></div>
+                <div class="reward-card"><div class="reward-icon">🅿️</div><div class="reward-name">1 Hour Free</div><div class="reward-desc">One free hour bay rental</div><div class="reward-cost"><span class="reward-points">100<small>pts</small></span></div><button class="btn btn-primary reward-btn">Redeem</button></div>
+                <div class="reward-card featured"><div class="reward-icon">🎁</div><div class="reward-name">2 Hours Free</div><div class="reward-desc">Two free hours bay rental</div><div class="reward-cost"><span class="reward-points">175<small>pts</small></span></div><button class="btn btn-primary reward-btn">Redeem</button></div>
+                <div class="reward-card"><div class="reward-icon">🔩</div><div class="reward-name">Tool Set</div><div class="reward-desc">Premium socket set</div><div class="reward-cost"><span class="reward-points">300<small>pts</small></span></div><button class="btn btn-outline reward-btn">Redeem</button></div>
+                <div class="reward-card featured"><div class="reward-icon">👑</div><div class="reward-name">Free Day Pass</div><div class="reward-desc">Full day unlimited access!</div><div class="reward-cost"><span class="reward-points">500<small>pts</small></span></div><button class="btn btn-primary reward-btn">Redeem</button></div>
+                <div class="reward-card"><div class="reward-icon">🎫</div><div class="reward-name">Car Show Entry</div><div class="reward-desc">VIP entry to car show</div><div class="reward-cost"><span class="reward-points">400<small>pts</small></span></div><button class="btn btn-outline reward-btn">Redeem</button></div>
+                <div class="reward-card featured"><div class="reward-icon">🏆</div><div class="reward-name">VIP Party</div><div class="reward-desc">Exclusive VIP member party</div><div class="reward-cost"><span class="reward-points">1000<small>pts</small></span></div><button class="btn btn-primary reward-btn">Redeem</button></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section class="leaderboard" id="leaderboard">
+        <div class="container">
+            <div class="section-title">
+                <h2>🏆 VIP Leaderboard</h2>
+                <p>Top members this month</p>
+            </div>
+            <div class="leaderboard-grid">
+                <div class="leaderboard-section">
+                    <h3>🔥 Top Referrers</h3>
+                    <div class="leaderboard-header"><span>#</span><span>Member</span><span>Refs</span></div>
+                    <div class="leaderboard-row top"><span class="leaderboard-rank">🥇</span><span class="leaderboard-name">Mike S.</span><span class="leaderboard-points">12</span></div>
+                    <div class="leaderboard-row"><span class="leaderboard-rank">2</span><span class="leaderboard-name">Alex R.</span><span class="leaderboard-points">8</span></div>
+                    <div class="leaderboard-row"><span class="leaderboard-rank">3</span><span class="leaderboard-name">Jorge M.</span><span class="leaderboard-points">6</span></div>
+                    <div class="leaderboard-row"><span class="leaderboard-rank">4</span><span class="leaderboard-name">Sarah K.</span><span class="leaderboard-points">5</span></div>
+                    <div class="leaderboard-row"><span class="leaderboard-rank">5</span><span class="leaderboard-name">Chris P.</span><span class="leaderboard-points">4</span></div>
+                </div>
+                <div class="leaderboard-section">
+                    <h3>💎 Most Points</h3>
+                    <div class="leaderboard-header"><span>#</span><span>Member</span><span>Points</span></div>
+                    <div class="leaderboard-row top"><span class="leaderboard-rank">🥇</span><span class="leaderboard-name">Alex R.</span><span class="leaderboard-points">4,250</span></div>
+                    <div class="leaderboard-row"><span class="leaderboard-rank">2</span><span class="leaderboard-name">Mike S.</span><span class="leaderboard-points">3,890</span></div>
+                    <div class="leaderboard-row"><span class="leaderboard-rank">3</span><span class="leaderboard-name">Jorge M.</span><span class="leaderboard-points">3,450</span></div>
+                    <div class="leaderboard-row"><span class="leaderboard-rank">4</span><span class="leaderboard-name">Sarah K.</span><span class="leaderboard-points">2,100</span></div>
+                    <div class="leaderboard-row"><span class="leaderboard-rank">5</span><span class="leaderboard-name">Chris P.</span><span class="leaderboard-points">1,850</span></div>
+                </div>
+                <div class="leaderboard-section">
+                    <h3>🎉 Monthly Winners</h3>
+                    <div class="leaderboard-header"><span>Award</span><span>Winner</span><span>Prize</span></div>
+                    <div class="leaderboard-row"><span>🥇</span><span class="leaderboard-name">Mike S.</span><span class="leaderboard-points">Free Day</span></div>
+                    <div class="leaderboard-row"><span>🥈</span><span class="leaderboard-name">Alex R.</span><span class="leaderboard-points">2hrs Free</span></div>
+                    <div class="leaderboard-row"><span>🥉</span><span class="leaderboard-name">Jorge M.</span><span class="leaderboard-points">1hr Free</span></div>
+                    <div style="text-align: center; padding: 24px; color: var(--cream); font-size: 14px;"><p>Next draw:</p><p style="color: var(--orange); font-weight: 700; font-size: 18px;">March 1, 2026</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLY -->
+    <section class="apply" id="apply">
+        <div class="container">
+            <div class="section-title">
+                <h2>Join the VIP Program</h2>
+                <p>Start earning rewards today</p>
+            </div>
+            <form class="apply-form" id="vip-form" onsubmit="submitVIPForm(event)">
+                <div class="form-row">
+                    <div class="form-group"><label>First Name *</label><input type="text" id="firstName" required placeholder="John"></div>
+                    <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" required placeholder="Doe"></div>
+                </div>
+                <div class="form-group"><label>Email *</label><input type="email" id="email" required placeholder="john@email.com"></div>
+                <div class="form-group"><label>Phone *</label><input type="tel" id="phone" required placeholder="(760) 555-0123"></div>
+                <div class="form-group"><label>Car/Project (optional)</label><input type="text" id="car" placeholder="e.g., 2018 Ford Mustang GT"></div>
+                <div class="form-group"><label>How did you hear about us?</label><select id="source"><option value="">Select...</option><option value="google">Google Search</option><option value="instagram">Instagram</option><option value="tiktok">TikTok</option><option value="friend">Friend Referral</option><option value="other">Other</option></select></div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="terms" required><label for="terms">I agree to the VIP program terms and conditions. I understand points are earned per hour of rental and must be redeemed within 12 months of earning.</label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="newsletter" checked><label for="newsletter">Send me VIP-only deals, event invitations, and member rewards!</label>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Join VIP Program</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>DESERT <span>AUTOLABS</span></h3>
+                    <p>Your Coachella Valley DIY auto workspace. Professional tools, lifts, and space for your projects.</p>
+                </div>
+                <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="#tiers">VIP Tiers</a></li><li><a href="#rewards">Rewards</a></li><li><a href="#apply">Join Now</a></li></ul></div>
+                <div><h4>Contact</h4><ul><li>Indio, CA 92201</li><li>(760) 999-9999</li><li>hello@desertautolabs.com</li></ul></div>
+                <div><h4>Hours</h4><ul><li>Mon-Fri: 8am-8pm</li><li>Saturday: 8am-8pm</li><li>Sunday: Closed</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Desert AutoLabs. All rights reserved. | Made with 🔥 in Indio, CA</p></div>
+        </div>
+    </footer>
+
+    <script>
+    function submitVIPForm(e) {
+        e.preventDefault();
+        const name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const car = document.getElementById('car').value;
+        const source = document.getElementById('source').value;
+        const newsletter = document.getElementById('newsletter').checked;
+        
+        // Save to localStorage
+        const vipData = JSON.parse(localStorage.getItem('vipMembers') || '[]');
+        vipData.push({ name, email, phone, car, source, newsletter, joinDate: new Date().toISOString(), points: 0, tier: 'Bronze' });
+        localStorage.setItem('vipMembers', JSON.stringify(vipData));
+        
+        alert('🎉 Welcome to the VIP Program, ' + name + '!\n\nYou start at BRONZE tier with 0 points.\nCheck your email for your welcome package!');
+    }
+    </script>
+</body>
+</html>
