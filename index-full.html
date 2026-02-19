@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Desert AutoLabs - Coachella Valley's premier DIY auto workspace. Professional lifts, tools, and workspace for car enthusiasts. Book your bay today!">
-    <meta name="keywords" content="DIY auto shop, car repair, vehicle lifts, Coachella Valley, Indio, auto workspace, mechanic alternative">
-    <meta property="og:title" content="Desert AutoLabs | DIY Auto Workspace Coachella Valley">
-    <meta property="og:description" content="Professional lifts. Thousands in tools. Zero mechanic fees. Your Coachella Valley DIY auto workspace.">
+    <meta name="description" content="Desert AutoLabs - Coachella Valley's premier DIY auto workspace. Professional lifts, tools, and workspace for car enthusiasts.">
     <title>Desert AutoLabs | DIY Auto Workspace Coachella Valley</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --orange: #E76F51; --orange-dark: #D15A3A; --charcoal: #2D2D2D; --slate: #1A1A1A; --cream: #F4F1DE; --copper: #C9A66B; --green: #2A9D8F; --white: #FFFFFF; --gray-light: #CCCCCC; --gray-dark: #3D3D3D; --gold: #FFD700; }
+        :root {
+            --orange: #E76F51; --orange-dark: #D15A3A; --charcoal: #2D2D2D; --slate: #1A1A1A;
+            --cream: #F4F1DE; --copper: #C9A66B; --green: #2A9D8F; --white: #FFFFFF;
+            --gray-light: #CCCCCC; --gray-dark: #3D3D3D; --gold: #FFD700;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: var(--cream); background-color: var(--charcoal); }
@@ -24,20 +25,12 @@
         .section-title h2 { font-size: clamp(32px, 5vw, 48px); color: var(--white); margin-bottom: 16px; }
         .section-title p { color: var(--gray-light); max-width: 600px; margin: 0 auto; }
         .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 8px; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease; border: none; }
-        .btn-primary { background: linear-gradient(135deg, var(--orange), var(--orange-dark)); color: var(--white); box-shadow: 0 4px 15px rgba(231, 111, 81, 0.3); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(231, 111, 81, 0.4); }
+        .btn-primary { background: linear-gradient(135deg, var(--orange), var(--orange-dark)); color: var(--white); }
+        .btn-primary:hover { transform: translateY(-3px); }
         .btn-outline { background: transparent; border: 2px solid var(--orange); color: var(--orange); }
         .btn-outline:hover { background: var(--orange); color: var(--white); }
-        
-        /* Preloader */
-        .preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--slate); display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease; }
-        .preloader.loaded { opacity: 0; pointer-events: none; }
-        .preloader-logo { font-family: 'Oswald', sans-serif; font-size: 48px; color: var(--orange); animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-        
-        /* Navigation */
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 0; transition: all 0.3s ease; }
-        .navbar.scrolled { background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px); padding: 15px 0; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+        .navbar.scrolled { background: rgba(26, 26, 26, 0.95); padding: 15px 0; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 28px; color: var(--white); }
         .logo span { color: var(--orange); }
@@ -46,12 +39,7 @@
         .nav-links a:hover { color: var(--orange); }
         .nav-cta { margin-left: 20px; }
         .mobile-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
-        .mobile-toggle span { width: 28px; height: 3px; background: var(--white); border-radius: 3px; transition: all 0.3s ease; }
-        .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
-        .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
-        
-        /* Hero */
+        .mobile-toggle span { width: 28px; height: 3px; background: var(--white); border-radius: 3px; }
         .hero { min-height: 100vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--slate) 0%, var(--charcoal) 100%); position: relative; }
         .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(231, 111, 81, 0.08) 0%, transparent 50%); }
         .hero-content { position: relative; z-index: 1; max-width: 800px; }
@@ -64,27 +52,21 @@
         .trust-badges { display: flex; gap: 30px; flex-wrap: wrap; }
         .trust-badge { display: flex; align-items: center; gap: 10px; color: var(--gray-light); font-size: 14px; }
         .trust-badge i { color: var(--orange); font-size: 20px; }
-        
-        /* Stats */
         .stats-bar { background: linear-gradient(135deg, var(--orange), var(--orange-dark)); padding: 50px 0; }
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; max-width: 1200px; margin: 0 auto; }
         .stat-item { text-align: center; }
         .stat-number { font-family: 'Oswald', sans-serif; font-size: 48px; font-weight: 700; color: var(--white); display: block; }
         .stat-label { font-size: 14px; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 1px; }
-        
-        /* Services */
         .services { background: var(--charcoal); }
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
         .service-card { background: var(--slate); border-radius: 16px; padding: 40px 30px; border: 1px solid var(--gray-dark); transition: all 0.4s ease; position: relative; }
         .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange), var(--copper)); transform: scaleX(0); transition: transform 0.4s ease; }
-        .service-card:hover { transform: translateY(-10px); border-color: var(--orange); box-shadow: 0 20px 40px rgba(231, 111, 81, 0.15); }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--orange); }
         .service-card:hover::before { transform: scaleX(1); }
         .service-icon { width: 70px; height: 70px; background: linear-gradient(135deg, rgba(231, 111, 81, 0.15), rgba(231, 111, 81, 0.05)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 24px; }
         .service-card h3 { font-size: 24px; color: var(--white); margin-bottom: 12px; }
         .service-card p { color: var(--gray-light); margin-bottom: 20px; }
         .service-price { display: inline-block; background: var(--orange); color: var(--white); padding: 8px 16px; border-radius: 8px; font-family: 'Oswald', sans-serif; font-weight: 700; }
-        
-        /* Features */
         .features { background: var(--slate); }
         .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
         .feature-item { display: flex; align-items: center; gap: 20px; padding: 24px; background: var(--charcoal); border-radius: 12px; border: 1px solid var(--gray-dark); transition: all 0.3s ease; }
@@ -92,25 +74,22 @@
         .feature-icon { font-size: 36px; }
         .feature-info h4 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
         .feature-info p { font-size: 13px; color: var(--gray-light); }
-        
-        /* Gallery */
         .gallery { background: var(--charcoal); }
         .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .gallery-item { position: relative; aspect-ratio: 4/3; border-radius: 16px; overflow: hidden; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
         .gallery-placeholder { width: 100%; height: 100%; background: linear-gradient(135deg, var(--gray-dark), var(--charcoal)); display: flex; align-items: center; justify-content: center; font-size: 64px; }
         .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; transform: translateY(100%); transition: transform 0.4s ease; }
         .gallery-item:hover .gallery-overlay { transform: translateY(0); }
         .gallery-overlay h4 { color: var(--white); font-size: 20px; }
         .gallery-overlay p { color: var(--orange); font-size: 14px; }
-        
-        /* Video */
         .video-section { background: linear-gradient(135deg, var(--slate), var(--charcoal)); padding: 100px 0; }
         .video-wrapper { max-width: 900px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
         .video-placeholder { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--gray-dark), var(--charcoal)); display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; }
         .play-btn { width: 100px; height: 100px; background: linear-gradient(135deg, var(--orange), var(--orange-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; color: var(--white); animation: pulse 2s infinite; }
         .video-placeholder p { color: var(--cream); font-size: 18px; margin-top: 20px; }
-        
-        /* Testimonials */
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         .testimonials { background: var(--charcoal); }
         .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
         .testimonial-card { background: var(--slate); border-radius: 16px; padding: 32px; border: 1px solid var(--gray-dark); position: relative; }
@@ -121,8 +100,6 @@
         .author-avatar { width: 56px; height: 56px; background: linear-gradient(135deg, var(--orange), var(--copper)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 20px; color: var(--white); }
         .author-info h4 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: var(--white); }
         .author-info p { font-size: 13px; color: var(--gray-light); }
-        
-        /* Team */
         .team { background: var(--slate); }
         .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
         .team-card { text-align: center; }
@@ -132,8 +109,6 @@
         .team-social { display: flex; justify-content: center; gap: 12px; margin-top: 16px; }
         .team-social a { width: 40px; height: 40px; background: var(--charcoal); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gray-light); }
         .team-social a:hover { background: var(--orange); color: var(--white); }
-        
-        /* Hours & Location */
         .hours-location { background: var(--charcoal); }
         .hl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .hours-card { background: var(--slate); border-radius: 20px; padding: 40px; border: 1px solid var(--gray-dark); }
@@ -147,14 +122,10 @@
         .map-placeholder { aspect-ratio: 4/3; background: linear-gradient(135deg, var(--gray-dark), var(--charcoal)); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--gray-light); }
         .map-placeholder i { font-size: 48px; margin-bottom: 16px; color: var(--orange); }
         .map-actions { display: flex; gap: 12px; margin-top: 20px; }
-        
-        /* Trust */
         .trust-section { background: var(--slate); padding: 60px 0; }
         .trust-grid { display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; }
         .trust-item { display: flex; align-items: center; gap: 12px; color: var(--gray-light); font-size: 14px; }
         .trust-item i { font-size: 24px; color: var(--green); }
-        
-        /* FAQ */
         .faq { background: var(--charcoal); }
         .faq-list { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid var(--gray-dark); }
@@ -165,14 +136,10 @@
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
         .faq-item.active .faq-answer { max-height: 300px; }
         .faq-answer p { padding-bottom: 24px; color: var(--gray-light); }
-        
-        /* CTA */
         .cta-section { background: linear-gradient(135deg, var(--orange), var(--orange-dark)); padding: 80px 0; text-align: center; }
         .cta-section h2 { font-size: clamp(32px, 5vw, 48px); color: var(--white); margin-bottom: 16px; }
         .cta-section p { color: rgba(255,255,255,0.9); font-size: 18px; margin-bottom: 32px; }
         .cta-section .btn { background: var(--white); color: var(--orange); }
-        
-        /* Footer */
         .footer { background: var(--slate); padding: 80px 0 30px; border-top: 1px solid var(--gray-dark); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
         .footer-brand h3 { font-size: 32px; color: var(--white); margin-bottom: 16px; }
@@ -192,12 +159,8 @@
         .footer-bottom p { color: var(--gray-light); font-size: 14px; }
         .footer-legal { display: flex; gap: 24px; }
         .footer-legal a { color: var(--gray-light); font-size: 13px; }
-        
-        /* Back to Top */
         .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--orange), var(--orange-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 20px; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(20px); transition: all 0.3s ease; z-index: 999; }
         .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
-        
-        /* Cookie */
         .cookie-consent { position: fixed; bottom: 0; left: 0; right: 0; background: var(--charcoal); border-top: 1px solid var(--gray-dark); padding: 20px; z-index: 9998; transform: translateY(100%); transition: transform 0.4s ease; }
         .cookie-consent.visible { transform: translateY(0); }
         .cookie-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
@@ -207,7 +170,6 @@
         .cookie-btn { padding: 12px 24px; border-radius: 8px; font-family: 'Oswald', sans-serif; font-size: 14px; cursor: pointer; }
         .cookie-btn.accept { background: var(--orange); color: var(--white); border: none; }
         .cookie-btn.decline { background: transparent; border: 1px solid var(--gray-dark); color: var(--gray-light); }
-        
         @media (max-width: 1024px) {
             .services-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
             .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -229,12 +191,18 @@
     </style>
 </head>
 <body>
-    <!-- Preloader -->
+    <!-- PRELOADER -->
     <div class="preloader" id="preloader">
-        <div class="preloader-logo">DESERT AUTOLABS</div>
+        <div class="preloader-content">
+            <div class="preloader-logo">DESERT AUTOLABS</div>
+            <div style="width: 200px; height: 4px; background: var(--gray-dark); border-radius: 2px; margin-top: 20px; overflow: hidden;">
+                <div style="width: 0; height: 100%; background: var(--orange); animation: loading 2s ease forwards;"></div>
+            </div>
+        </div>
     </div>
+    <style>@keyframes loading { to { width: 100%; } }</style>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">DESERT <span>AUTOLABS</span></a>
@@ -255,11 +223,11 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge"><i class="fas fa-fire"></i><span>🔥 Grand Opening: First Hour FREE!</span></div>
+                <div class="hero-badge"><i class="fas fa-fire"></i><span>🔥 Grand Opening Special: First Hour FREE!</span></div>
                 <h1>You Work. <span>We Provide</span> the Space.</h1>
                 <p>Professional lifts. Thousands in tools. Zero mechanic fees. Coachella Valley's premier DIY auto workspace.</p>
                 <div class="hero-buttons">
@@ -276,7 +244,7 @@
         </div>
     </section>
 
-    <!-- Stats -->
+    <!-- STATS BAR -->
     <div class="stats-bar">
         <div class="stats-grid">
             <div class="stat-item"><span class="stat-number">3</span><span class="stat-label">Service Bays</span></div>
@@ -286,7 +254,7 @@
         </div>
     </div>
 
-    <!-- Services -->
+    <!-- SERVICES -->
     <section class="section services" id="services">
         <div class="container">
             <div class="section-title">
@@ -303,7 +271,7 @@
                 <div class="service-card" style="border-color: var(--orange);">
                     <div class="service-icon">🏗️</div>
                     <h3>Lift Bay</h3>
-                    <p>Full 2-post lift access for undercar work, suspension, exhaust, and more. Most popular!</p>
+                    <p>Full 2-post lift access for undercar work, suspension, exhaust, and more. Most popular choice!</p>
                     <span class="service-price">$45/hour</span>
                 </div>
                 <div class="service-card">
@@ -316,7 +284,7 @@
         </div>
     </section>
 
-    <!-- Features -->
+    <!-- FEATURES -->
     <section class="section features" id="features">
         <div class="container">
             <div class="section-title">
@@ -324,19 +292,43 @@
                 <p>Everything you need to get the job done right</p>
             </div>
             <div class="features-grid">
-                <div class="feature-item"><div class="feature-icon">🌡️</div><div class="feature-info"><h4>Climate Controlled</h4><p>Beat the desert heat with full A/C</p></div></div>
-                <div class="feature-item"><div class="feature-icon">🛡️</div><div class="feature-info"><h4>Fully Insured</h4><p>$2M liability coverage</p></div></div>
-                <div class="feature-item"><div class="feature-icon">👥</div><div class="feature-info"><h4>Community</h4><p>Connect with car enthusiasts</p></div></div>
-                <div class="feature-item"><div class="feature-icon">🅿️</div><div class="feature-info"><h4>Free Parking</h4><p>Plenty of space for projects</p></div></div>
-                <div class="feature-item"><div class="feature-icon">🔧</div><div class="feature-info"><h4>50+ Tools</h4><p>Professional-grade equipment</p></div></div>
-                <div class="feature-item"><div class="feature-icon">💨</div><div class="feature-info"><h4>Air Compressor</h4><p>Industrial grade</p></div></div>
-                <div class="feature-item"><div class="feature-icon">📊</div><div class="feature-info"><h4>Diagnostics</h4><p>OBD2 scanners included</p></div></div>
-                <div class="feature-item"><div class="feature-icon">📶</div><div class="feature-info"><h4>Free WiFi</h4><p>High-speed internet</p></div></div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌡️</div>
+                    <div class="feature-info"><h4>Climate Controlled</h4><p>Beat the desert heat with full A/C</p></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-info"><h4>Fully Insured</h4><p>$2M liability coverage</p></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-info"><h4>Community</h4><p>Connect with car enthusiasts</p></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🅿️</div>
+                    <div class="feature-info"><h4>Free Parking</h4><p>Plenty of space for projects</p></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔧</div>
+                    <div class="feature-info"><h4>50+ Tools</h4><p>Professional-grade equipment</p></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💨</div>
+                    <div class="feature-info"><h4>Air Compressor</h4><p>Industrial grade</p></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-info"><h4>Diagnostics</h4><p>OBD2 scanners included</p></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📶</div>
+                    <div class="feature-info"><h4>Free WiFi</h4><p>High-speed internet</p></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery -->
+    <!-- GALLERY -->
     <section class="section gallery" id="gallery">
         <div class="container">
             <div class="section-title">
@@ -354,7 +346,7 @@
         </div>
     </section>
 
-    <!-- Video -->
+    <!-- VIDEO SECTION -->
     <section class="section video-section" id="video">
         <div class="container">
             <div class="section-title">
@@ -362,5 +354,28 @@
                 <p>See our facility before you visit</p>
             </div>
             <div class="video-wrapper">
-                <div class="video-placeholder" onclick="alert('Add YouTube embed URL here!')">
-                    <div class="play-btn"><i class="fas fa-play"></i></div
+                <div class="video-placeholder" onclick="alert('Add YouTube embed here!')">
+                    <div class="play-btn"><i class="fas fa-play"></i></div>
+                    <p>Watch Our Facility Tour</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Customers Say</h2>
+                <p>Real feedback from real DIY enthusiasts</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Saved $2,000 doing my own brakes and suspension. This place is an absolute game changer."</p>
+                    <div class="testimonial-author"><div class="author-avatar">M</div><div class="author-info"><h4>Mike S.</h4><p>Indio, CA</p></div></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"As an apartment dweller, I thought I'd never be able to work on my project car. Desert AutoLabs made it possible!"</p>
+                    <div class="testimonial-author"><div class="author-avatar">A</div
