@@ -120,6 +120,10 @@
 
         /* FAQ */
         .faq { background-color: var(--slate); }
+
+        /* BOOKING */
+        .booking { background-color: var(--charcoal); }
+        .booking-container { max-width: 900px; margin: 0 auto; }
         .faq-list { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid var(--gray-dark); }
         .faq-question { width: 100%; padding: 24px 0; background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
@@ -177,7 +181,7 @@
                 <a href="#how-it-works">How It Works</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#tools">Tools</a>
-                <a href="#gallery">Gallery</a>
+                <a href="#booking">Book Now</a>
                 <a href="#faq">FAQ</a>
             </div>
             <a href="#booking" class="btn btn-primary" style="display:block;">Book Now</a>
@@ -254,7 +258,7 @@
                         <li>Workbench</li>
                         <li>LED lighting</li>
                     </ul>
-                    <a href="#" class="btn btn-outline">Select Basic</a>
+                    <a href="#booking" class="btn btn-outline">Select Basic</a>
                 </div>
                 <div class="price-card featured">
                     <span class="badge">Most Popular</span>
@@ -267,7 +271,7 @@
                         <li>Workbench</li>
                         <li>A/C workspace</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Select Lift Bay</a>
+                    <a href="#booking" class="btn btn-primary">Select Lift Bay</a>
                 </div>
                 <div class="price-card">
                     <h3>Membership</h3>
@@ -279,7 +283,7 @@
                         <li>Bring 2 guests</li>
                         <li>Exclusive member perks</li>
                     </ul>
-                    <a href="#" class="btn btn-outline">Join Membership</a>
+                    <a href="#booking" class="btn btn-outline">Join Membership</a>
                 </div>
             </div>
         </div>
@@ -381,6 +385,35 @@
                 <div class="faq-item">
                     <button class="faq-question"><h4>Is there a minimum rental time?</h4><span class="faq-toggle">+</span></button>
                     <div class="faq-answer"><p>Yes, the minimum rental is 2 hours. This ensures you have enough time to complete basic maintenance tasks.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING SECTION -->
+    <section class="section booking" id="booking" style="background: linear-gradient(135deg, var(--slate) 0%, var(--charcoal) 100%);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Your Bay</h2>
+                <p>Select your workspace and reserve your time</p>
+            </div>
+            <div class="booking-container" style="background: var(--charcoal); border-radius: 16px; padding: 32px; border: 1px solid var(--gray-dark);">
+                <!-- Calendly inline widget placeholder -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_CALENDLY_LINK" style="min-width:320px;height:700px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                
+                <!-- Fallback form for before Calendly is set up -->
+                <div id="booking-fallback" style="text-align: center; padding: 60px 20px;">
+                    <div style="font-size: 64px; margin-bottom: 24px;">📅</div>
+                    <h3 style="color: var(--white); font-size: 32px; margin-bottom: 16px;">Booking System Coming Soon!</h3>
+                    <p style="color: var(--gray-light); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        We're setting up online booking. For now, schedule your visit by contacting us directly.
+                    </p>
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                        <a href="sms:+17609999999" class="btn btn-primary">📱 Text to Book</a>
+                        <a href="mailto:hello@desertautolabs.com" class="btn btn-outline">✉️ Email Us</a>
+                    </div>
+                    <p style="color: var(--gray-light); margin-top: 32px; font-size: 14px;">Or call us at (760) 999-9999</p>
                 </div>
             </div>
         </div>
