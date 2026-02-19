@@ -170,6 +170,18 @@
             .footer-grid { grid-template-columns: 1fr; text-align: center; }
             .social-links { justify-content: center; }
         }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-fade { animation: fadeInUp 0.6s ease forwards; }
+        .price-card:hover .btn-primary { animation: pulse 0.3s ease; }
     </style>
 </head>
 <body>
@@ -179,10 +191,10 @@
             <a href="#" class="logo">DESERT <span>AUTOLABS</span></a>
             <div class="nav-links" id="navLinks">
                 <a href="#how-it-works">How It Works</a>
+                <a href="#features">Features</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#tools">Tools</a>
-                <a href="#booking">Book Now</a>
-                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
             </div>
             <a href="#booking" class="btn btn-primary" style="display:block;">Book Now</a>
             <div class="mobile-toggle" id="mobileToggle">
@@ -197,6 +209,7 @@
             <div class="hero-content">
                 <h1>You Work. We Provide the Space.</h1>
                 <p>Professional lifts. Thousands in tools. Zero mechanic fees. Coachella Valley's first DIY auto workspace.</p>
+                <p style="color: var(--orange); font-weight: 600; margin-top: -20px; margin-bottom: 24px;">🔥 Grand Opening Special: First Hour FREE!</p>
                 <div class="hero-buttons">
                     <a href="#pricing" class="btn btn-primary">Book a Bay</a>
                     <a href="#pricing" class="btn btn-outline">Book 1st Hour Free</a>
@@ -284,6 +297,38 @@
                         <li>Exclusive member perks</li>
                     </ul>
                     <a href="#booking" class="btn btn-outline">Join Membership</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section features" id="features" style="background-color: var(--charcoal);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Desert AutoLabs?</h2>
+                <p>The ultimate workspace for DIY enthusiasts</p>
+            </div>
+            <div class="features-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+                <div class="feature-card" style="text-align: center; padding: 32px 24px; background: var(--slate); border-radius: 12px; border: 1px solid var(--gray-dark);">
+                    <div style="font-size: 48px; margin-bottom: 16px;">🌡️</div>
+                    <h4 style="color: var(--white); font-size: 20px; margin-bottom: 8px;">Climate Controlled</h4>
+                    <p style="color: var(--gray-light); font-size: 14px;">Beat the desert heat with full A/C</p>
+                </div>
+                <div class="feature-card" style="text-align: center; padding: 32px 24px; background: var(--slate); border-radius: 12px; border: 1px solid var(--gray-dark);">
+                    <div style="font-size: 48px; margin-bottom: 16px;">🛡️</div>
+                    <h4 style="color: var(--white); font-size: 20px; margin-bottom: 8px;">Full Insurance</h4>
+                    <p style="color: var(--gray-light); font-size: 14px;">Your vehicle is protected while you work</p>
+                </div>
+                <div class="feature-card" style="text-align: center; padding: 32px 24px; background: var(--slate); border-radius: 12px; border: 1px solid var(--gray-dark);">
+                    <div style="font-size: 48px; margin-bottom: 16px;">👥</div>
+                    <h4 style="color: var(--white); font-size: 20px; margin-bottom: 8px;">Community</h4>
+                    <p style="color: var(--gray-light); font-size: 14px;">Connect with fellow car enthusiasts</p>
+                </div>
+                <div class="feature-card" style="text-align: center; padding: 32px 24px; background: var(--slate); border-radius: 12px; border: 1px solid var(--gray-dark);">
+                    <div style="font-size: 48px; margin-bottom: 16px;">🅿️</div>
+                    <h4 style="color: var(--white); font-size: 20px; margin-bottom: 8px;">Free Parking</h4>
+                    <p style="color: var(--gray-light); font-size: 14px;">Plenty of space for you and your project</p>
                 </div>
             </div>
         </div>
@@ -390,6 +435,33 @@
         </div>
     </section>
 
+    <!-- CONTACT SECTION -->
+    <section class="section contact" id="contact" style="background-color: var(--slate);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Have questions? Reach out to us!</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 900px; margin: 0 auto;">
+                <div style="text-align: center; padding: 32px; background: var(--charcoal); border-radius: 12px; border: 1px solid var(--gray-dark);">
+                    <div style="font-size: 40px; margin-bottom: 16px;">📍</div>
+                    <h4 style="color: var(--white); font-size: 20px; margin-bottom: 8px;">Location</h4>
+                    <p style="color: var(--gray-light); font-size: 14px;">Indio, CA 92201</p>
+                </div>
+                <div style="text-align: center; padding: 32px; background: var(--charcoal); border-radius: 12px; border: 1px solid var(--gray-dark);">
+                    <div style="font-size: 40px; margin-bottom: 16px;">📱</div>
+                    <h4 style="color: var(--white); font-size: 20px; margin-bottom: 8px;">Phone</h4>
+                    <p style="color: var(--gray-light); font-size: 14px;">(760) 999-9999</p>
+                </div>
+                <div style="text-align: center; padding: 32px; background: var(--charcoal); border-radius: 12px; border: 1px solid var(--gray-dark);">
+                    <div style="font-size: 40px; margin-bottom: 16px;">✉️</div>
+                    <h4 style="color: var(--white); font-size: 20px; margin-bottom: 8px;">Email</h4>
+                    <p style="color: var(--gray-light); font-size: 14px;">hello@desertautolabs.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- BOOKING SECTION -->
     <section class="section booking" id="booking" style="background: linear-gradient(135deg, var(--slate) 0%, var(--charcoal) 100%);">
         <div class="container">
@@ -405,6 +477,17 @@
         </div>
     </section>
 
+    <!-- CTA BANNER -->
+    <section style="background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%); padding: 60px 24px; text-align: center;">
+        <div class="container">
+            <h2 style="color: var(--white); font-size: 36px; margin-bottom: 16px;">Ready to Start Your Project?</h2>
+            <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Book your bay today and experience the ultimate DIY workspace in Coachella Valley.
+            </p>
+            <a href="#booking" class="btn" style="background: var(--white); color: var(--orange); padding: 18px 40px; font-size: 18px;">Book Now →</a>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
@@ -413,19 +496,19 @@
                     <h3>DESERT <span>AUTOLABS</span></h3>
                     <p>Your Coachella Valley DIY auto workspace. Professional tools, lifts, and space for your projects.</p>
                     <div class="social-links">
-                        <a href="#">📷</a>
-                        <a href="#">🎵</a>
-                        <a href="#">👤</a>
+                        <a href="https://instagram.com/desertautolabs" target="_blank" title="Instagram">📷</a>
+                        <a href="https://tiktok.com/@desertautolabs" target="_blank" title="TikTok">🎵</a>
+                        <a href="https://facebook.com/desertautolabs" target="_blank" title="Facebook">👤</a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#features">Features</a></li>
                         <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#tools">Tools</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col footer-contact">
@@ -445,6 +528,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Desert AutoLabs. All rights reserved.</p>
+                <p style="margin-top: 8px; font-size: 12px; color: var(--gray-light);">Made with 🔥 in Indio, CA</p>
             </div>
         </div>
     </footer>
