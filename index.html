@@ -235,19 +235,6 @@
 </head>
 <body>
     <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-logo">DESERT AUTOLABS</div>
-        <div class="preloader-bar"><div class="preloader-progress"></div></div>
-    </div>
-    
-    <style>
-        .preloader { position: fixed; inset: 0; background: var(--slate); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99999; transition: opacity 0.5s ease; }
-        .preloader.hidden { opacity: 0; visibility: hidden; }
-        .preloader-logo { font-family: 'Oswald', sans-serif; font-size: 48px; color: var(--orange); animation: pulse 1.5s infinite; letter-spacing: 3px; }
-        .preloader-bar { width: 200px; height: 4px; background: var(--gray-dark); border-radius: 2px; margin-top: 24px; overflow: hidden; }
-        .preloader-progress { height: 100%; background: linear-gradient(90deg, var(--orange), var(--copper)); width: 0; animation: loading 2s ease forwards; }
-        @keyframes loading { to { width: 100%; } }
-    </style>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
