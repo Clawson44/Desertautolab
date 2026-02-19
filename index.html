@@ -641,16 +641,93 @@
     <!-- REFERRAL PROGRAM -->
     <section class="section referral" id="referral" style="background: linear-gradient(135deg, var(--slate) 0%, var(--charcoal) 100%);">
         <div class="container">
-            <div style="background: var(--charcoal); border-radius: 20px; padding: 60px; text-align: center; border: 2px solid var(--orange); max-width: 800px; margin: 0 auto;">
+            <div style="background: var(--charcoal); border-radius: 20px; padding: 60px; text-align: center; border: 2px solid var(--orange); max-width: 900px; margin: 0 auto;">
                 <div style="font-size: 64px; margin-bottom: 24px;">🎁</div>
                 <h2 style="color: var(--white); font-size: 36px; margin-bottom: 16px;">Refer a Friend, Get $10 Off!</h2>
-                <p style="color: var(--gray-light); font-size: 18px; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                <p style="color: var(--gray-light); font-size: 18px; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
                     Share Desert AutoLabs with your fellow car enthusiasts. When they book their first visit, you both get $10 off your next rental.
                 </p>
-                <a href="#booking" class="btn btn-primary" style="padding: 18px 40px; font-size: 18px;">Start Referring</a>
+                
+                <!-- Referral Form -->
+                <div id="referral-form" style="max-width: 500px; margin: 0 auto; text-align: left;">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Your Name *</label>
+                        <input type="text" id="referrer-name" placeholder="John Doe" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Your Email *</label>
+                        <input type="email" id="referrer-email" placeholder="john@email.com" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Friend's Name *</label>
+                        <input type="text" id="friend-name" placeholder="Jane Doe" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Friend's Email *</label>
+                        <input type="email" id="friend-email" placeholder="jane@email.com" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
+                    </div>
+                    <div style="margin-bottom: 24px;">
+                        <label style="display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500;">Your Referral Code (optional)</label>
+                        <input type="text" id="referral-code" placeholder="Create a code or leave blank" style="width: 100%; padding: 14px 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none;">
+                    </div>
+                    <button type="button" onclick="submitReferral()" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 16px;">Send Referral</button>
+                </div>
+                
+                <!-- Success Message -->
+                <div id="referral-success" style="display: none; text-align: center; padding: 40px;">
+                    <div style="font-size: 64px; margin-bottom: 24px;">✅</div>
+                    <h3 style="color: var(--white); font-size: 28px; margin-bottom: 16px;">Referral Sent!</h3>
+                    <p style="color: var(--gray-light); font-size: 16px; margin-bottom: 24px;">We've sent your friend an invitation. You'll both get $10 off when they book their first visit!</p>
+                    <button type="button" onclick="resetReferral()" class="btn btn-outline">Refer Another Friend</button>
+                </div>
             </div>
         </div>
     </section>
+
+    <script>
+    function submitReferral() {
+        const referrerName = document.getElementById('referrer-name').value;
+        const referrerEmail = document.getElementById('referrer-email').value;
+        const friendName = document.getElementById('friend-name').value;
+        const friendEmail = document.getElementById('friend-email').value;
+        const referralCode = document.getElementById('referral-code').value || 'NEW';
+        
+        if (!referrerName || !referrerEmail || !friendName || !friendEmail) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        // Create mailto link for manual submission (free solution)
+        const subject = encodeURIComponent('Desert AutoLabs Referral - $10 Off!');
+        const body = encodeURIComponent(
+            `Hi ${friendName}!\n\n` +
+            `${referrerName} wants to invite you to Desert AutoLabs - Coachella Valley's premier DIY auto workspace!\n\n` +
+            `Use their referral code: ${referralCode}\n\n` +
+            `Book your first visit and you both get $10 off!\n\n` +
+            `Visit: https://clawson44.github.io/Desertautolab/\n\n` +
+            `See you in the shop! 🔧`
+        );
+        
+        // Send email to friend
+        window.location.href = `mailto:${friendEmail}?subject=${subject}&body=${body}`;
+        
+        // Show success after a brief delay
+        setTimeout(() => {
+            document.getElementById('referral-form').style.display = 'none';
+            document.getElementById('referral-success').style.display = 'block';
+        }, 500);
+    }
+    
+    function resetReferral() {
+        document.getElementById('referrer-name').value = '';
+        document.getElementById('referrer-email').value = '';
+        document.getElementById('friend-name').value = '';
+        document.getElementById('friend-email').value = '';
+        document.getElementById('referral-code').value = '';
+        document.getElementById('referral-form').style.display = 'block';
+        document.getElementById('referral-success').style.display = 'none';
+    }
+    </script>
 
     <!-- NEWSLETTER -->
     <section class="section newsletter" id="newsletter" style="background-color: var(--slate);">
