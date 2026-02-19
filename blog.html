@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Blog | Desert AutoLabs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --orange: #E76F51; --charcoal: #2D2D2D; --slate: #1A1A1A; --cream: #F4F1DE; --gray-light: #CCCCCC; --gray-dark: #3D3D3D; --gold: #FFD700; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7; color: var(--cream); background: var(--charcoal); }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; font-weight: 700; line-height: 1.3; color: var(--white); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navigation */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: var(--slate); padding: 20px 0; border-bottom: 1px solid var(--gray-dark); }
+        .nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 24px; color: var(--white); }
+        .logo span { color: var(--orange); }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: var(--cream); font-size: 14px; text-transform: uppercase; }
+        .nav-links a:hover { color: var(--orange); }
+        
+        /* Hero */
+        .hero { padding: 140px 0 80px; text-align: center; }
+        .hero h1 { font-size: 56px; margin-bottom: 16px; }
+        .hero h1 span { color: var(--orange); }
+        .hero p { color: var(--gray-light); font-size: 20px; max-width: 600px; margin: 0 auto; }
+        
+        /* Featured Post */
+        .featured { background: var(--slate); border-radius: 24px; overflow: hidden; margin-bottom: 60px; display: grid; grid-template-columns: 1fr 1fr; }
+        .featured-image { background: linear-gradient(135deg, var(--gray-dark), var(--charcoal)); min-height: 400px; display: flex; align-items: center; justify-content: center; font-size: 120px; }
+        .featured-content { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
+        .featured-badge { display: inline-block; background: var(--orange); color: var(--white); padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 16px; width: fit-content; }
+        .featured-content h2 { font-size: 32px; margin-bottom: 16px; }
+        .featured-content p { color: var(--gray-light); margin-bottom: 24px; }
+        .read-more { display: inline-flex; align-items: center; gap: 8px; color: var(--orange); font-weight: 600; }
+        .read-more:hover { text-decoration: underline; }
+        
+        /* Blog Grid */
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .section-header h2 { font-size: 36px; }
+        .filter-tabs { display: flex; gap: 12px; }
+        .filter-tab { padding: 10px 20px; border-radius: 30px; background: var(--slate); border: 1px solid var(--gray-dark); color: var(--cream); cursor: pointer; font-size: 14px; transition: all 0.3s ease; }
+        .filter-tab.active, .filter-tab:hover { background: var(--orange); border-color: var(--orange); }
+        
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 80px; }
+        .blog-card { background: var(--slate); border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-dark); transition: all 0.3s ease; }
+        .blog-card:hover { transform: translateY(-8px); border-color: var(--orange); }
+        .blog-image { aspect-ratio: 16/9; background: linear-gradient(135deg, var(--gray-dark), var(--charcoal)); display: flex; align-items: center; justify-content: center; font-size: 64px; }
+        .blog-content { padding: 24px; }
+        .blog-meta { display: flex; gap: 16px; margin-bottom: 12px; font-size: 12px; color: var(--gray-light); text-transform: uppercase; }
+        .blog-meta span { display: flex; align-items: center; gap: 6px; }
+        .blog-content h3 { font-size: 20px; margin-bottom: 12px; }
+        .blog-content p { color: var(--gray-light); font-size: 14px; margin-bottom: 16px; }
+        
+        /* Newsletter */
+        .newsletter { background: linear-gradient(135deg, var(--orange), #D15A3A); padding: 80px 0; text-align: center; margin-bottom: 80px; border-radius: 24px; }
+        .newsletter h2 { font-size: 36px; margin-bottom: 16px; }
+        .newsletter p { max-width: 500px; margin: 0 auto 32px; opacity: 0.9; }
+        .newsletter-form { display: flex; gap: 16px; max-width: 500px; margin: 0 auto; }
+        .newsletter-form input { flex: 1; padding: 18px 24px; border-radius: 8px; border: none; font-size: 16px; }
+        .newsletter-form button { padding: 18px 32px; background: var(--charcoal); color: var(--white); border: none; border-radius: 8px; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; }
+        .newsletter-form button:hover { transform: scale(1.05); }
+        
+        /* Footer */
+        .footer { background: var(--slate); padding: 60px 0 30px; border-top: 1px solid var(--gray-dark); }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .footer h4 { color: var(--white); font-size: 14px; text-transform: uppercase; margin-bottom: 24px; }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 12px; }
+        .footer ul li a { color: var(--gray-light); font-size: 14px; }
+        .footer ul li a:hover { color: var(--orange); }
+        
+        @media (max-width: 1024px) {
+            .featured { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <a href="index.html" class="logo">DESERT <span>AUTOLABS</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="vip-rewards.html">VIP Rewards</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>News & <span>Updates</span></h1>
+            <p>Stay up to date with Desert AutoLabs, car care tips, and community stories.</p>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <div class="container">
+        <div class="featured">
+            <div class="featured-image">🚗</div>
+            <div class="featured-content">
+                <span class="featured-badge">Grand Opening</span>
+                <h2>Desert AutoLabs Grand Opening - We're Finally Open!</h2>
+                <p>After months of preparation, we're thrilled to announce that Desert AutoLabs is now open! Our 3-bay facility is ready to serve the Coachella Valley automotive community.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="container">
+        <div class="section-header">
+            <h2>Latest Posts</h2>
+            <div class="filter-tabs">
+                <button class="filter-tab active">All</button>
+                <button class="filter-tab">Tips</button>
+                <button class="filter-tab">Community</button>
+                <button class="filter-tab">Events</button>
+            </div>
+        </div>
+        
+        <div class="blog-grid">
+            <article class="blog-card">
+                <div class="blog-image">🔧</div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 Feb 18, 2026</span>
+                        <span>📁 Tips</span>
+                    </div>
+                    <h3>5 DIY Maintenance Tasks Every Car Owner Should Know</h3>
+                    <p>Save money and keep your car running smoothly with these essential maintenance tips.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">🏆</div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 Feb 15, 2026</span>
+                        <span>📁 Community</span>
+                    </div>
+                    <h3>Meet Our First VIP Members!</h3>
+                    <p>Introducing the founding members of our VIP rewards program. See who's leading the leaderboard!</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">🎉</div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 Feb 10, 2026</span>
+                        <span>📁 Events</span>
+                    </div>
+                    <h3>Monthly Cars & Coffee Events Coming Soon!</h3>
+                    <p>Join us for our inaugural Cars & Coffee meetup. Free coffee, great cars, and better company.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">❄️</div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 Feb 5, 2026</span>
+                        <span>📁 Tips</span>
+                    </div>
+                    <h3>Beat the Desert Heat: Why Our A/C Workspace Is a Game Changer</h3>
+                    <p>Working on your car in 110°F weather? Not at Desert AutoLabs. Learn why climate control matters.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">🛠️</div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 Jan 28, 2026</span>
+                        <span>📁 Tips</span>
+                    </div>
+                    <h3>Essential Tools for Your First DIY Project</h3>
+                    <p>Not sure what tools you need? We've got everything covered. Here's what's included with your bay rental.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+            
+            <article class="blog-card">
+                <div class="blog-image">👥</div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 Jan 20, 2026</span>
+                        <span>📁 Community</span>
+                    </div>
+                    <h3>Building a Car Community in Coachella Valley</h3>
+                    <p>Desert AutoLabs isn't just a workspace—it's a community of car enthusiasts. Learn about our vision.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="container">
+        <div class="newsletter">
+            <h2>Stay in the Loop</h2>
+            <p>Get the latest news, tips, and exclusive offers delivered to your inbox.</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <a href="index.html" class="logo">DESERT <span>AUTOLABS</span></a>
+                <p style="color: var(--gray-light); margin-top: 16px; max-width: 300px;">Your Coachella Valley DIY auto workspace.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li>Indio, CA 92201</li>
+                    <li>(760) 999-9999</li>
+                    <li>hello@desertautolabs.com</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">📷 Instagram</a></li>
+                    <li><a href="#">🎵 TikTok</a></li>
+                    <li><a href="#">👤 Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    function subscribeNewsletter(e) {
+        e.preventDefault();
+        alert('Thanks for subscribing! Check your email for confirmation.');
+        e.target.reset();
+    }
+    </script>
+</body>
+</html>
