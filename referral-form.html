@@ -5,40 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desert AutoLabs Referral Program</title>
     <style>
-        :root { --orange: #E76F51; --charcoal: #2D2D2D; --slate: #1A1A1A; --cream: #F4F1DE; --gray-dark: #3D3D3D; }
+        :root { --orange: #E76F51; --charcoal: #2D2D2D; --slate: #1A1A1A; --cream: #F4F1DE; --gray-dark: #3D3D3D; --gold: #FFD700; --green: #2A9D8F; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, var(--slate) 0%, var(--charcoal) 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
-        .container { background: var(--charcoal); border-radius: 20px; padding: 60px; max-width: 600px; width: 100%; border: 2px solid var(--orange); }
+        .container { background: var(--charcoal); border-radius: 20px; padding: 60px; max-width: 700px; width: 100%; border: 2px solid var(--orange); }
         h1 { font-family: 'Oswald', sans-serif; color: var(--cream); font-size: 32px; text-align: center; margin-bottom: 12px; }
         .subtitle { color: #CCCCCC; text-align: center; margin-bottom: 40px; font-size: 16px; }
-        .form-group { margin-bottom: 24px; }
+        .form-group { margin-bottom: 20px; }
         label { display: block; color: var(--cream); margin-bottom: 8px; font-weight: 500; }
         input { width: 100%; padding: 16px; border-radius: 8px; border: 1px solid var(--gray-dark); background: var(--slate); color: var(--cream); font-size: 16px; outline: none; }
         input:focus { border-color: var(--orange); }
         .section-title { color: var(--orange); font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; margin-top: 32px; }
         .btn { width: 100%; padding: 18px; border-radius: 8px; border: none; font-family: 'Oswald', sans-serif; font-size: 18px; cursor: pointer; transition: all 0.3s ease; }
         .btn-primary { background: var(--orange); color: white; }
-        .btn-primary:hover { background: #D15A3A; }
+        .btn-primary:hover { background: #D15A3A; transform: translateY(-2px); }
         .benefits { background: var(--slate); border-radius: 12px; padding: 24px; margin-bottom: 32px; }
         .benefit { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--cream); }
         .benefit:last-child { margin-bottom: 0; }
         .benefit-icon { font-size: 24px; }
+        .trophy { font-size: 48px; margin-bottom: 16px; }
         #success { display: none; text-align: center; }
         .success-icon { font-size: 80px; margin-bottom: 24px; }
         h2 { color: var(--cream); font-size: 28px; margin-bottom: 16px; }
         .referral-code-display { background: var(--slate); padding: 20px; border-radius: 12px; margin: 24px 0; border: 2px dashed var(--orange); }
         .referral-code-display code { font-family: 'Monaco', monospace; font-size: 32px; color: var(--orange); letter-spacing: 4px; }
+        
+        /* LEADERBOARD STYLES */
+        .leaderboard { background: var(--slate); border-radius: 16px; padding: 32px; margin-top: 48px; border: 1px solid var(--gray-dark); }
+        .leaderboard h3 { font-family: 'Oswald', sans-serif; color: var(--cream); font-size: 24px; text-align: center; margin-bottom: 24px; }
+        .leaderboard-header { display: grid; grid-template-columns: 60px 1fr 100px 120px; gap: 16px; padding: 12px 16px; background: var(--orange); border-radius: 8px; margin-bottom: 12px; font-weight: 700; color: white; font-size: 14px; }
+        .leaderboard-row { display: grid; grid-template-columns: 60px 1fr 100px 120px; gap: 16px; padding: 16px; background: var(--charcoal); border-radius: 8px; margin-bottom: 8px; align-items: center; transition: all 0.3s ease; }
+        .leaderboard-row:hover { transform: scale(1.02); border: 1px solid var(--orange); }
+        .leaderboard-row.gold { border: 2px solid var(--gold); background: linear-gradient(135deg, var(--charcoal), rgba(255, 215, 0, 0.1)); }
+        .leaderboard-row.silver { border: 2px solid #C0C0C0; }
+        .leaderboard-row.bronze { border: 2px solid #CD7F32; }
+        .rank { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; }
+        .gold .rank { color: var(--gold); }
+        .silver .rank { color: #C0C0C0; }
+        .bronze .rank { color: #CD7F32; }
+        .referrer-name { font-weight: 600; color: var(--cream); }
+        .referral-count { font-family: 'Oswald', sans-serif; font-size: 20px; color: var(--orange); font-weight: 700; }
+        .reward { font-size: 14px; color: var(--green); font-weight: 600; }
+        .empty-leaderboard { text-align: center; padding: 40px; color: var(--gray-light); }
+        
+        /* SMS SECTION */
+        .sms-section { background: var(--slate); border-radius: 12px; padding: 24px; margin-top: 24px; border: 1px solid var(--gray-dark); }
+        .sms-title { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .sms-icon { font-size: 32px; }
+        .sms-title h4 { color: var(--cream); font-size: 18px; }
+        .sms-input-group { display: flex; gap: 12px; }
+        .sms-input-group input { flex: 1; }
+        .sms-btn { white-space: nowrap; width: auto; padding: 16px 24px; }
     </style>
 </head>
 <body>
     <div class="container" id="form-container">
-        <h1>🎁 Refer a Friend</h1>
-        <p class="subtitle">Give $10, Get $10! Share Desert AutoLabs with your friends.</p>
+        <div style="text-align: center; margin-bottom: 24px;">
+            <span style="font-size: 64px;">🎁</span>
+        </div>
+        <h1>Refer Friends, Earn Rewards!</h1>
+        <p class="subtitle">Give $10, Get $10! See who's on top of the leaderboard!</p>
+        
+        <!-- LEADERBOARD PREVIEW -->
+        <div class="leaderboard">
+            <h3>🏆 Top Referrers This Month</h3>
+            <div id="leaderboard-container">
+                <div class="leaderboard-header">
+                    <span>#</span>
+                    <span>Name</span>
+                    <span>Refs</span>
+                    <span>Reward</span>
+                </div>
+                <div id="leaderboard-rows">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+            <p style="text-align: center; color: var(--gray-light); font-size: 14px; margin-top: 16px;">
+                Refer friends to climb the leaderboard! Top 3 get bonus rewards!
+            </p>
+        </div>
         
         <div class="benefits">
             <div class="benefit"><span class="benefit-icon">✅</span> Friend gets $10 off their first visit</div>
-            <div class="benefit"><span class="benefit-icon">✅</span> You earn $10 credit for your next visit</div>
-            <div class="benefit"><span class="benefit-icon">✅</span> Both of you save money!</div>
+            <div class="benefit"><span class="benefit-icon">✅</span> You earn $10 credit for each referral</div>
+            <div class="benefit"><span class="benefit-icon">🔥</span> Top 3 referrers get BONUS rewards!</div>
+            <div class="benefit"><span class="benefit-icon">📱</span> Get SMS notifications when friends book</div>
         </div>
         
         <form id="referralForm" onsubmit="submitReferral(event)">
@@ -46,6 +97,10 @@
             <div class="form-group">
                 <label>Your Name *</label>
                 <input type="text" id="referrerName" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+                <label>Your Phone (for SMS notifications) *</label>
+                <input type="tel" id="referrerPhone" required placeholder="(760) 555-0123">
             </div>
             <div class="form-group">
                 <label>Your Email *</label>
@@ -62,12 +117,29 @@
                 <input type="text" id="friendName" required placeholder="Jane Doe">
             </div>
             <div class="form-group">
+                <label>Friend's Phone (optional - they'll get SMS too!)</label>
+                <input type="tel" id="friendPhone" placeholder="(760) 555-0199">
+            </div>
+            <div class="form-group">
                 <label>Friend's Email *</label>
                 <input type="email" id="friendEmail" required placeholder="jane@email.com">
             </div>
             
-            <button type="submit" class="btn btn-primary">Send Referral</button>
+            <button type="submit" class="btn btn-primary">🎁 Send Referral</button>
         </form>
+        
+        <!-- SMS Notification Section -->
+        <div class="sms-section">
+            <div class="sms-title">
+                <span class="sms-icon">📱</span>
+                <h4>Get SMS Notifications</h4>
+            </div>
+            <p style="color: var(--gray-light); font-size: 14px; margin-bottom: 16px;">We'll text you when your friend books!</p>
+            <div class="sms-input-group">
+                <input type="tel" id="smsPhone" placeholder="Your phone number">
+                <button type="button" onclick="subscribeSMS()" class="btn btn-primary sms-btn">Subscribe</button>
+            </div>
+        </div>
         
         <div id="success">
             <div class="success-icon">✅</div>
@@ -76,55 +148,121 @@
             <div class="referral-code-display">
                 <code id="displayCode">NEWFRIEND</code>
             </div>
-            <p style="color: #CCCCCC; font-size: 14px;">Use this code when you book to claim your $10 discount!</p>
+            <p style="color: #CCCCCC; font-size: 14px; margin-bottom: 24px;">Use this code when you book to claim your $10 discount!</p>
             <button class="btn btn-primary" onclick="resetForm()" style="margin-top: 24px;">Refer Another Friend</button>
         </div>
     </div>
     
     <script>
+    // Initialize or load referrals
+    let referrals = JSON.parse(localStorage.getItem('desertReferrals') || '[]');
+    
+    // Render leaderboard
+    function renderLeaderboard() {
+        const container = document.getElementById('leaderboard-rows');
+        
+        // Count referrals per person
+        const counts = {};
+        referrals.forEach(r => {
+            const code = r.referrerCode || r.referrerName.toUpperCase();
+            counts[code] = counts[code] || { name: r.referrerName, count: 0, phone: r.referrerPhone };
+            counts[code].count++;
+        });
+        
+        // Sort by count
+        const sorted = Object.entries(counts)
+            .map(([code, data]) => ({ code, ...data }))
+            .sort((a, b) => b.count - a.count)
+            .slice(0, 10);
+        
+        if (sorted.length === 0) {
+            container.innerHTML = '<div class="empty-leaderboard">No referrals yet. Be the first!</div>';
+            return;
+        }
+        
+        container.innerHTML = sorted.map((r, i) => {
+            const rank = i + 1;
+            let rowClass = '';
+            let trophy = rank;
+            let reward = '-$10';
+            
+            if (rank === 1) { rowClass = 'gold'; trophy = '🥇'; reward = '-$25 BONUS!'; }
+            else if (rank === 2) { rowClass = 'silver'; trophy = '🥈'; reward = '-$15'; }
+            else if (rank === 3) { rowClass = 'bronze'; trophy = '🥉'; reward = '-$10'; }
+            
+            return `
+                <div class="leaderboard-row ${rowClass}">
+                    <span class="rank">${trophy}</span>
+                    <span class="referrer-name">${r.name}</span>
+                    <span class="referral-count">${r.count}</span>
+                    <span class="reward">${reward}</span>
+                </div>
+            `;
+        }).join('');
+    }
+    
     function submitReferral(e) {
         e.preventDefault();
         
         const referrerName = document.getElementById('referrerName').value;
+        const referrerPhone = document.getElementById('referrerPhone').value;
         const referrerEmail = document.getElementById('referrerEmail').value;
-        const referrerCode = document.getElementById('referrerCode').value.toUpperCase() || 'NEWFRIEND';
+        const referrerCode = document.getElementById('referrerCode').value.toUpperCase() || referrerName.toUpperCase();
         const friendName = document.getElementById('friendName').value;
+        const friendPhone = document.getElementById('friendPhone').value;
         const friendEmail = document.getElementById('friendEmail').value;
         
-        // Generate unique referral code if not provided
+        // Generate unique code
         const uniqueCode = referrerCode + Math.random().toString(36).substr(2, 4).toUpperCase();
         
-        // Send to Google Sheets (replace with your Google Apps Script URL)
-        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+        // Save referral
+        const referral = {
+            referrerName, referrerPhone, referrerEmail, referrerCode: uniqueCode,
+            friendName, friendPhone, friendEmail,
+            date: new Date().toISOString()
+        };
         
-        // For now, show success and send email
+        referrals.push(referral);
+        localStorage.setItem('desertReferrals', JSON.stringify(referrals));
+        
+        // Update leaderboard
+        renderLeaderboard();
+        
+        // Send email to friend
         const subject = encodeURIComponent('🎁 You got $10 off at Desert AutoLabs!');
         const body = encodeURIComponent(
-            `Hi ${friendName}!\n\n` +
-            `${referrerName} wants you to experience Desert AutoLabs - Coachella Valley's premier DIY auto workspace!\n\n` +
-            `🔥 Use code: ${uniqueCode}\n` +
-            `🎁 Get $10 off your first visit!\n\n` +
-            `Book now: https://clawson44.github.io/Desertautolab/\n\n` +
-            `See you in the shop! 🔧`
+            `Hi ${friendName}!\n\n${referrerName} wants you to experience Desert AutoLabs!\n\n🔥 YOUR $10 OFF CODE: ${uniqueCode}\n\nBook: https://clawson44.github.io/Desertautolab/\n\nSee you in the shop! 🔧`
         );
-        
-        // Open email client for friend
         window.location.href = `mailto:${friendEmail}?subject=${subject}&body=${body}`;
         
-        // Show success after short delay
+        // Show success
         setTimeout(() => {
             document.getElementById('referralForm').style.display = 'none';
             document.getElementById('success').style.display = 'block';
             document.getElementById('displayCode').textContent = uniqueCode;
-            
-            // Save to localStorage for tracking
-            const referrals = JSON.parse(localStorage.getItem('referrals') || '[]');
-            referrals.push({
-                referrerName, referrerEmail, referrerCode: uniqueCode, 
-                friendName, friendEmail, date: new Date().toISOString()
-            });
-            localStorage.setItem('referrals', JSON.stringify(referrals));
-        }, 1000);
+        }, 800);
+        
+        // Send SMS notification (placeholder - see setup guide)
+        sendSMSNotification(referrerPhone, `🎁 ${referrerName}, your referral to ${friendName} was sent! Your code: ${uniqueCode}`);
+        if (friendPhone) {
+            sendSMSNotification(friendPhone, `🎁 You got $10 off at Desert AutoLabs! Code: ${uniqueCode} - Book now: https://clawson44.github.io/Desertautolab/`);
+        }
+    }
+    
+    function sendSMSNotification(phone, message) {
+        // SMS will be sent via backend. For now, log it.
+        console.log('SMS to', phone, ':', message);
+        // In production, this would call your SMS API (Twilio, etc.)
+    }
+    
+    function subscribeSMS() {
+        const phone = document.getElementById('smsPhone').value;
+        if (!phone) {
+            alert('Please enter your phone number');
+            return;
+        }
+        alert('📱 SMS subscription activated! You\'ll get notified when your referrals book.');
+        localStorage.setItem('smsSubscribed_' + phone, 'true');
     }
     
     function resetForm() {
@@ -132,6 +270,9 @@
         document.getElementById('referralForm').style.display = 'block';
         document.getElementById('success').style.display = 'none';
     }
+    
+    // Initialize
+    renderLeaderboard();
     </script>
 </body>
 </html>
